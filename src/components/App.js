@@ -12,7 +12,7 @@ function App() {
   return (
     <div className="app">
       <Header onSearchChange={handleSearchChange} searchQuery={searchQuery}/>
-      <ListingsContainer />
+      <ListingsContainer searchQuery={searchQuery}/>
     </div>
   );
 }

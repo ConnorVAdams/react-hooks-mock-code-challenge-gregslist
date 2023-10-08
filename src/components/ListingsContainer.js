@@ -1,11 +1,24 @@
-import React from "react";
-// import ListingCard from "./ListingCard";
+import { useEffect, useState }from "react";
+import ListingCard from "./ListingCard";
 
-function ListingsContainer() {
+function ListingsContainer({ searchQuery }) {
+  const [listings, setListings] = useState([])
+
+  useEffect(() => {
+    fetch('http://localhost:6001/listings')
+    .then(resp => resp.json())
+    .then(data => setListings(data))
+  }, [])
+  
+  const currentListings = listings
+  .map(listing => {
+    return <ListingCard key={listing.id} {...listing}/> 
+  })
+
   return (
     <main>
       <ul className="cards">
-        {/* use the ListingCard component to display listings */}
+        {currentListings}
       </ul>
     </main>
   );
