@@ -11,6 +11,10 @@ function ListingsContainer({ searchQuery }) {
   }, [])
   
   const currentListings = listings
+  .filter(listing => {
+    const searchRegEx = new RegExp(searchQuery, 'i')
+    return searchRegEx.test(listing.description)
+  })
   .map(listing => {
     return <ListingCard key={listing.id} {...listing}/> 
   })
