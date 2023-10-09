@@ -19,6 +19,11 @@ const Form = ({ onSubmit }) => {
         e.preventDefault()
         const newListing = {...formData}
         onSubmit(newListing)
+        setFormData({
+            description: '',
+        image: '',
+        location: '',
+        })
     }
 
   return (

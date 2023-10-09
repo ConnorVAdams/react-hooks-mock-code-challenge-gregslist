@@ -45,7 +45,7 @@ function App() {
     <div className="app">
       <Header onSearchChange={handleSearchChange} searchQuery={searchQuery}/>
         <Form onSubmit={handleSubmit} />
-        <ListingsContainer onDelete={handleDelete} searchQuery={searchQuery} currentListings={currentListings}/>
+        <ListingsContainer onDelete={handleDelete} currentListings={currentListings}/>
     </div>
   );
 }
