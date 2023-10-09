@@ -10,7 +10,8 @@
       "id": 2,
       "description": "2019 Toyota Tacoma grill",
       "image": "./images/toyota-grill.jpg",
-      "location": "Williamsburg"
+      "location": "Williamsburg",
+      "favorited": false
     },
     {
       "id": 3,
