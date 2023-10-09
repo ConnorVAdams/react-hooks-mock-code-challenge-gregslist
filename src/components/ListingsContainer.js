@@ -1,33 +1,20 @@
-import { useEffect, useState }from "react";
+import { useState }from "react";
 import ListingCard from "./ListingCard";
 
-function ListingsContainer({ searchQuery }) {
-  const [listings, setListings] = useState([])
+function ListingsContainer({ searchQuery, currentListings, onDelete }) {
+  const [currentSort, setCurrentSort] = useState('Alphabetical')
+  const handleSort = () => {
+    
+  }
 
-  useEffect(() => {
-    fetch('http://localhost:6001/listings')
-    .then(resp => resp.json())
-    .then(data => setListings(data))
-  }, [])
-  
-  const handleDelete = (id) => {
-    const newListings = listings.filter(listing => listing.id !== id)
-    setListings(newListings)
-    }
-
-  const currentListings = listings
-  .filter(listing => {
-    const searchRegEx = new RegExp(searchQuery, 'i')
-    return searchRegEx.test(listing.description)
-  })
-  .map(listing => {
-    return <ListingCard key={listing.id} {...listing} onDelete={handleDelete} /> 
+  const listingsToDisplay = currentListings.map(listing => {
+    return <ListingCard key={listing.id} {...listing} onDelete={onDelete} /> 
   })
 
   return (
     <main>
       <ul className="cards">
-        {currentListings}
+        {listingsToDisplay}
       </ul>
     </main>
   );
